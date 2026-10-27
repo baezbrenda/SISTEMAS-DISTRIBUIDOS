@@ -1,0 +1,16 @@
+services:
+  inventory-service:
+    image: nginx
+    networks:
+      - ecommerce-network
+  orders-service:
+    image: alpine
+    command: sleep infinity
+    depends_on:
+      - inventory-service
+    networks:
+      - ecommerce-network
+
+networks:
+  ecommerce-network:
+    driver: bridge
